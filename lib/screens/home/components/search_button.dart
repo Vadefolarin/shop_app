@@ -27,7 +27,8 @@ class SearchWidget extends StatelessWidget {
             contentPadding: EdgeInsets.symmetric(
               horizontal: getProportionateScreenHeight(20),
               vertical: getProportionateScreenWidth(9),
-            )),
+            ),
+            ),
       ),
     );
   }

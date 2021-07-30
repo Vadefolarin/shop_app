@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/size_config.dart';
+import 'categories.dart';
 import 'discount_banner.dart';
 import 'home_Header.dart';
 
@@ -19,7 +19,7 @@ class Body extends StatelessWidget {
               height: getProportionateScreenWidth(30),
             ),
             DiscountBanner(),
-             SizedBox(
+            SizedBox(
               height: getProportionateScreenWidth(30),
             ),
             Categories(),
@@ -40,16 +40,22 @@ class Categories extends StatelessWidget {
       {"icon": "assets/icons/gift-box.svg", "text": "Daily gift"},
       {"icon": "assets/icons/discover.svg", "text": "Discover"},
     ];
-    return SizedBox(
-      width: getProportionateScreenWidth(55),
-      child: AspectRatio(aspectRatio:1,
-      child: Container(
-        decoration: BoxDecoration(
-          color:  Color(0xFFFFECDF),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: SvgPicture.asset(categories[0]["icon"]),
-      ),),
+    return Padding(
+      padding:  EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+         ...List.generate(
+            categories.length,
+            (index) => CategoryCard(
+              icon: categories[index]["icon"],
+              text: categories[index]["text"],
+              press: () {},
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
